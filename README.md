@@ -3,7 +3,24 @@
 
 ### 规定了一下目录结构和代码样式
 
-## 一、基础命名风格
+
+## 一、目录结构
+
+- 根目录/
+  - Properties/
+  - packages/
+  - src/
+    - components/
+    - motherboard/
+    - api/
+    - assets/
+    - views/
+  - Global.asax
+  - Global.asax.cs
+  - README.md
+
+
+## 二、基础命名风格
 
 ### 1. 禁止特殊符号
 - 命名不能以下划线 `_` 或美元符号 `$` 开头或结尾  
@@ -29,7 +46,7 @@
   ✅ 正例：`MAX_STOCK_COUNT`  
   ❌ 反例：`maxCount`
 
-## 二、特殊场景命名
+## 三、特殊场景命名
 
 ### 1. 特定类型命名
 | 类型       | 规则                     | 示例               |
@@ -49,7 +66,7 @@
 - **包名**：全小写，单数形式  
   ✅ 正例：`com.alibaba.util`
 
-## 三、分层命名规约
+## 四、分层命名规约
 
 ### Service/DAO 层
 | 操作类型   | 前缀        | 示例           |
@@ -70,7 +87,7 @@
 
 > 📌 POJO 是 `DO/DTO/BO/VO` 的统称，禁止使用 `xxxPOJO` 命名
 
-## 四、其他重要规则
+## 五、其他重要规则
 
 ### 1. 杜绝不规范缩写
 ❌ 反例：`AbstractClass` → `AbsClass`
