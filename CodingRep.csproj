@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\init.sql" />
     <Content Include="Global.asax" />
     <Content Include="README.md" />
     <Content Include="src\assets\font\iconfont.svg" />
@@ -145,7 +146,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="src\api\" />
     <Folder Include="src\assets\icon\" />
