@@ -73,6 +73,7 @@
     <Content Include="src\assets\logo\logo.png" />
     <Content Include="src\assets\script\layui.js" />
     <Content Include="src\assets\style\AppHeader-Commom-Style.css" />
+    <Content Include="src\assets\style\AppHeader-Login-Style.css" />
     <Content Include="src\assets\style\layui.css" />
     <Content Include="src\components\NavButton.ascx" />
     <Content Include="src\test\Global.aspx" />

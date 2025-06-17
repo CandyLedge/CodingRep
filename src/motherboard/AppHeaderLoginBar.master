@@ -4,16 +4,20 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="../assets/style/AppHeader-Login-Style.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AppHeaderStartAdd" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="AppHeaderEndAdd" runat="server">
     
-    <asp:Button ID="btnLogin" runat="server" Text="登录"/>
-    <asp:Button ID="btnRegister" runat="server" Text="注册" />
+    <asp:Button ID="btnLogin" CssClass="btnLogin" runat="server" Text="登录"/>
+    <asp:Button ID="btnRegister" CssClass="btnRegister" runat="server" Text="注册" />
     
     <uc:NavButton ID="NavButtonHome" runat="server" describeDisplay="True" />
     
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contentContainer" runat="server">
 </asp:Content>
+
+
+
