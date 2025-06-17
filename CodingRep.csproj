@@ -69,7 +69,15 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="README.md" />
-    <Content Include="src\components\AppHeader.ascx" />
+    <Content Include="src\assets\font\iconfont.svg" />
+    <Content Include="src\assets\logo\logo.png" />
+    <Content Include="src\assets\script\layui.js" />
+    <Content Include="src\assets\style\AppHeader-Commom-Style.css" />
+    <Content Include="src\assets\style\layui.css" />
+    <Content Include="src\components\NavButton.ascx" />
+    <Content Include="src\test\Global.aspx" />
+    <Content Include="src\test\WebForm1.aspx" />
+    <Content Include="src\views\TestView.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,23 +85,57 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\components\AppHeader.ascx.cs">
+    <Compile Include="src\components\NavButton.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>AppHeader.ascx</DependentUpon>
+      <DependentUpon>NavButton.ascx</DependentUpon>
     </Compile>
-    <Compile Include="src\components\AppHeader.ascx.designer.cs">
-      <DependentUpon>AppHeader.ascx</DependentUpon>
+    <Compile Include="src\components\NavButton.ascx.designer.cs">
+      <DependentUpon>NavButton.ascx</DependentUpon>
     </Compile>
     <Compile Include="src\motherboard\AppHeaderGlobalBar.Master.cs">
       <DependentUpon>AppHeaderGlobalBar.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="src\motherboard\AppHeaderGlobalBar.Master.designer.cs">
       <DependentUpon>AppHeaderGlobalBar.Master</DependentUpon>
+    </Compile>
+    <Compile Include="src\motherboard\AppHeaderLoginBar.master.cs">
+      <DependentUpon>AppHeaderLoginBar.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\motherboard\AppHeaderLoginBar.master.designer.cs">
+      <DependentUpon>AppHeaderLoginBar.master</DependentUpon>
+    </Compile>
+    <Compile Include="src\test\Global.aspx.cs">
+      <DependentUpon>Global.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\test\Global.aspx.designer.cs">
+      <DependentUpon>Global.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\test\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\test\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\TestView.aspx.cs">
+      <DependentUpon>TestView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\views\TestView.aspx.designer.cs">
+      <DependentUpon>TestView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="src\motherboard\AppHeaderGlobalBar.Master" />
+    <Content Include="src\assets\font\iconfont.eot" />
+    <Content Include="src\assets\font\iconfont.ttf" />
+    <Content Include="src\assets\font\iconfont.woff" />
+    <Content Include="src\assets\font\iconfont.woff2" />
+    <Content Include="src\motherboard\AppHeaderLoginBar.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,8 +148,7 @@
     <Folder Include="Models\" />
     <Folder Include="src\api\" />
     <Folder Include="src\assets\icon\" />
-    <Folder Include="src\assets\logo\" />
-    <Folder Include="src\views\" />
+    <Folder Include="src\assets\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

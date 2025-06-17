@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/src/motherboard/AppHeaderGlobalBar.Master" AutoEventWireup="true" CodeBehind="AppHeaderLoginBar.master.cs" Inherits="CodingRep.src.motherboard.AppHeaderLoginBar" %>
+
+<%@ Register Src="~/src/components/NavButton.ascx" TagPrefix="uc" TagName="NavButton" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="AppHeaderStartAdd" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="AppHeaderEndAdd" runat="server">
+    
+    <asp:Button ID="btnLogin" runat="server" Text="登录"/>
+    <asp:Button ID="btnRegister" runat="server" Text="注册" />
+    
+    <uc:NavButton ID="NavButtonHome" runat="server" describeDisplay="True" />
+    
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contentContainer" runat="server">
+</asp:Content>
