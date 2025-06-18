@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".env" />
     <Content Include="App_Data\init.sql" />
     <Content Include="Global.asax" />
     <Content Include="README.md" />
@@ -103,6 +104,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service\tool\IEmailSender.cs" />
+    <Compile Include="service\tool\impl\EmalSender.cs" />
     <Compile Include="service\UserRepositoryUtils.cs" />
     <Compile Include="src\components\NavButton.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
