@@ -104,10 +104,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service\query\UserRepositoryUtils.cs" />
     <Compile Include="service\stores\EnvironmentStore.cs" />
     <Compile Include="service\tool\IEmailSender.cs" />
     <Compile Include="service\tool\impl\EmailSender.cs" />
-    <Compile Include="service\UserRepositoryUtils.cs" />
     <Compile Include="src\components\NavButton.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>NavButton.ascx</DependentUpon>

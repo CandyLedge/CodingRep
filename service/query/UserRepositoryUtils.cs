@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CodingRep.App_Code;
 
-namespace CodingRep.service
+namespace CodingRep.service.query
 {
     public class UserRepositoryService: IDisposable
     {
