@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -83,6 +91,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\branches.cs" />
+    <Compile Include="App_Code\commits.cs" />
+    <Compile Include="App_Code\fileSnapshots.cs" />
+    <Compile Include="App_Code\ModelDb.cs" />
+    <Compile Include="App_Code\repositories.cs" />
+    <Compile Include="App_Code\users.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -93,6 +107,13 @@
     </Compile>
     <Compile Include="src\components\NavButton.ascx.designer.cs">
       <DependentUpon>NavButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="src\motherboard\AppHeaderGeneralBar.master.cs">
+      <DependentUpon>AppHeaderGeneralBar.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\motherboard\AppHeaderGeneralBar.master.designer.cs">
+      <DependentUpon>AppHeaderGeneralBar.master</DependentUpon>
     </Compile>
     <Compile Include="src\motherboard\AppHeaderGlobalBar.Master.cs">
       <DependentUpon>AppHeaderGlobalBar.Master</DependentUpon>
@@ -138,6 +159,7 @@
     <Content Include="src\assets\font\iconfont.woff" />
     <Content Include="src\assets\font\iconfont.woff2" />
     <Content Include="src\motherboard\AppHeaderLoginBar.master" />
+    <Content Include="src\motherboard\AppHeaderGeneralBar.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
