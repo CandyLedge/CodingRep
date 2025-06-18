@@ -13,10 +13,9 @@
     <asp:Button ID="btnLogin" CssClass="btnLogin" runat="server" Text="登录"/>
     <asp:Button ID="btnRegister" CssClass="btnRegister" runat="server" Text="注册" />
     
-    <uc:NavButton ID="NavButtonHome" runat="server" describeDisplay="True" />
-    
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contentContainer" runat="server">
+    <asp:ContentPlaceHolder ID="mainContainer" runat="server" ContentPlaceHolderID="mainContainer"></asp:ContentPlaceHolder>
 </asp:Content>
 
 
