@@ -69,13 +69,12 @@
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <div class="verification-code-box">
-                                        <asp:TextBox ID="txtVerificationCode" runat="server" CssClass="verification-code-input" Required="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtVerificationCode" runat="server" CssClass="verification-code-input"></asp:TextBox>
                                         <asp:Button ID="btnGetVerificationCode" runat="server" Text="获取验证码" CssClass="verification-code-button" CausesValidation="False" OnClick="btnGetVerificationCode_Click" />
+                                        <asp:Label runat="server" ID="lblVerificationCode"></asp:Label>
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                            <%-- TODO 邮件已发送 --%>
-                            <asp:Label runat="server" ID="lblVerificationCode"></asp:Label>
                         </td>
                     </tr>
                     <tr>

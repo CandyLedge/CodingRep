@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,8 +16,10 @@ namespace CodingRep.src.views
     public partial class Register : System.Web.UI.Page
     {
         private ModelDb db = new ModelDb();
-        private string  verificationCode;
-        private DateTime verificationCodeCollingTime;
+        private readonly ConcurrentDictionary<string, (string Code, DateTime SendTime)> codeCache 
+            = new ConcurrentDictionary<string, (string,DateTime)>();
+
+        private readonly int expiryMinutes = 5;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -23,75 +27,88 @@ namespace CodingRep.src.views
         
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            verificationCode = ViewState["verificationCode"].ToString();
-            var user = db.users.Where(u => u.userName == txtUsername.Text).ToList(); //查找是否重复账号
+            txtVerificationCode.Enabled = true;
+            string email = txtEmail.Text.Trim();
+            string inputCode = txtVerificationCode.Text.Trim();
+
+            if (!codeCache.TryGetValue(email, out var cachedCode))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('请先获取验证码');", true);
+                return;
+            }
+
+            if ((DateTime.Now - cachedCode.SendTime).TotalMinutes > expiryMinutes)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('验证码已过期，请重新获取');", true);
+                return;
+            }
+
+            if (inputCode != cachedCode.Code)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('邮箱验证码错误');", true);
+                return;
+            }
+
+            // 验证后注册
+            var user = db.users.Where(u => u.userName == txtUsername.Text).ToList();
             if (user.Any())
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('用户已存在');", true);
-            
+                return;
             }
-            else
+
+            var passwordData = PasswordUtil.Hash(txtPassword.Text);
+            var newUser = new users
             {
-                if (verificationCode == null)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('请获取验证码');", true);
-                }
-                else if (txtVerificationCode.Text == null)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('请输入邮箱验证码');", true);
-                }
-                else if (verificationCode != txtVerificationCode.Text)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('邮箱验证码错误');", true);
-                }
-                else
-                {
-                    var passwordData = PasswordUtil.Hash(txtPassword.Text);
-                    var newUser      = new users();
-                    newUser.userName     = txtUsername.Text;
-                    newUser.salt         = passwordData.Salt;
-                    newUser.passwordHash = passwordData.Hash;
-                    newUser.email        = txtEmail.Text;
-                    newUser.createdAt    = DateTime.Now;
-                    newUser.email        = txtEmail.Text;
-                    db.users.Add(newUser);
-                    db.SaveChanges();
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('注册成功');", true);
-                    txtUsername.Text = string.Empty;
-                    txtEmail.Text = string.Empty;
-                    txtPassword.Text = string.Empty;
-                    txtVerificationCode.Text = string.Empty;
-                    lblVerificationCode.Text = string.Empty;
-                }
-            }
+                userName = txtUsername.Text,
+                salt = passwordData.Salt,
+                passwordHash = passwordData.Hash,
+                email = email,
+                createdAt = DateTime.Now
+            };
+
+            db.users.Add(newUser);
+            db.SaveChanges();
+            codeCache.TryRemove(email, out _); // 注册成功后移除验证码
+
+            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('注册成功');", true);
+            txtUsername.Text = txtEmail.Text = txtPassword.Text = txtVerificationCode.Text = "";
+            lblVerificationCode.Text = "";
         }
 
         protected void btnGetVerificationCode_Click(object sender, EventArgs e)
         {
-            ViewState["SavePassword"] = txtPassword.Text;
-            var user = db.users.Where(u => u.email == txtEmail.Text).ToList(); //查找是否重复邮箱
-            if (user.Any())
+            string email = txtEmail.Text.Trim();
+
+            // 查重
+            var existingUsers = db.users.Where(u => u.email == email).ToList();
+            if (existingUsers.Any())
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('邮箱已注册');", true);
+                return;
+            }
+
+            // 从 Session 读取缓存
+            var cached = Session[email] as Tuple<string, DateTime>;
+
+            if (cached != null && (DateTime.Now - cached.Item2).TotalMinutes < expiryMinutes)
+            {
+                lblVerificationCode.Text = "请勿频繁获取验证码";
+                return;
+            }
+
+            string code = EmailVerificationService.sendVerificationCode(email);
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                Session[email] = new Tuple<string, DateTime>(code, DateTime.Now);
+                lblVerificationCode.Text = "验证码已发送";
             }
             else
             {
-                if (string.IsNullOrEmpty(txtEmail.Text))
-                {
-                    lblVerificationCode.Text = "请输入邮箱";
-                }
-                else if (verificationCodeCollingTime == default || (DateTime.Now - verificationCodeCollingTime).TotalMinutes >= 5)
-                {
-                    verificationCodeCollingTime   = DateTime.Now;
-                    verificationCode              = EmailVerificationService.sendVerificationCode(txtEmail.Text);
-                    ViewState["verificationCode"] = verificationCode;
-                    lblVerificationCode.Text      = "邮件已发送";
-                }
-                else
-                {
-                    lblVerificationCode.Text = "请勿频繁获取验证码";
-                }
+                lblVerificationCode.Text = "验证码发送失败";
             }
         }
+
     }
 }
