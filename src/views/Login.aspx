@@ -6,10 +6,30 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link href="../assets/style/Login-Style.css" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <div class="login-container">
+                <div class="display-area">
+                    <img src="display_image_url_here" alt="Display Image" style="max-width: 100%;"/> <!-- 替换为实际展示图片URL -->
+                </div>
+                <div class="input-area">
+                    <h2>CodingRep 登录</h2>
+                    <label>账户</label>
+                    <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+                    <label>密码</label>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <div style="text-align: center;">
+                        <asp:Button ID="btnLogin" runat="server" Text="登录" CssClass="login-btn" OnClick="loginBtn_Click" />
+                        <asp:Button ID="btnPasskey" runat="server" Text="Passkey" CssClass="passkey-btn" />
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="#">注册</a> | <a href="#">忘记登录信息</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </body>

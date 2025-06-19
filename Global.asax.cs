@@ -10,11 +10,14 @@ namespace CodingRep
 {
     public class Global : System.Web.HttpApplication
     {
+        
         protected void Application_Start(object sender, EventArgs e)
         { 
             // TODO 这里仅供测试，到时候来个统一的store
-        // 实例化 EnvironmentStore 以加载环境变量
-        var envStore = new EnvironmentStore();
+            // EnvironmentStore envStore = new EnvironmentStore();
+            // var emailAccount = Environment.GetEnvironmentVariable("NETEASE_EMAIL_ACCOUNT");
+            // var emailAuthCode = Environment.GetEnvironmentVariable("NETEASE_EMAIL_AUTH_CODE");
+            // Console.WriteLine($"Email Account: {emailAccount}, Auth Code: {emailAuthCode}");
         }
     }
 }

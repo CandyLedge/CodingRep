@@ -140,4 +140,11 @@ input[type="submit"]:hover {
     gap: 10px; /* 输入框与按钮之间的间距 */
 }
 
+.label-error{
+    color: red;
+}
+.verification-code-message{
+    color:red;
+}
+
 

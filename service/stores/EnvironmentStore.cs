@@ -1,11 +1,13 @@
 
+using System.Runtime.Remoting.Channels;
+
 namespace CodingRep.service.stores
 {
     public class EnvironmentStore
     {
         private readonly string _envFilePath;
 
-        public EnvironmentStore(string envFilePath = "~/.env")
+        public EnvironmentStore(string envFilePath = "../../.env")
         {
             _envFilePath = envFilePath;
             loadEnvironmentVariables();
