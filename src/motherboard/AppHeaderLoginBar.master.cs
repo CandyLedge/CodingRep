@@ -13,5 +13,15 @@ namespace CodingRep.src.motherboard
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../views/Login.aspx");
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../views/Register.aspx");
+        }
     }
 }

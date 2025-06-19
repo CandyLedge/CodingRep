@@ -27,12 +27,22 @@
                         <div class="index-panel-body">
                             <h3>免费加入CodingRep0v0</h3>
                             <div class="index-input-group index-input-group-lg">
-                                <asp:TextBox ID="txtEmail" runat="server" CssClass="index-form-control" placeholder="请输入邮箱地址" required="true" />
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="index-form-control" placeholder="请输入邮箱地址" />
+                                
+                                
                                 <span class="index-input-group-btn">
                                     <asp:Button ID="btnSignUp" runat="server" Text="在CodringRep上注册" CssClass="index-btn index-btn-primary" />
                                 </span>
                             </div>
-                            <p class="index-help-block">已经有账号了? <a href="#">登录</a></p>
+                            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" 
+                                                                ControlToValidate="txtEmail" 
+                                                                ErrorMessage="邮箱地址不能为空" 
+                                                                CssClass="index-error-block"
+                                                                Display="Dynamic" />
+                            
+                            <p class="index-help-block">已经有账号了? <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Login.aspx">登录</asp:HyperLink></p>
+                            
+                            
                         </div>
                     </div>
                 </div>

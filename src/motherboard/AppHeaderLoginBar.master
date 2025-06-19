@@ -14,8 +14,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="AppHeaderEndAdd" runat="server">
     
-    <asp:Button ID="btnLogin" CssClass="btnLogin" runat="server" Text="登录"/>
-    <asp:Button ID="btnRegister" CssClass="btnRegister" runat="server" Text="注册" />
+    <asp:Button ID="btnLogin" CssClass="btnLogin" runat="server" Text="登录" CausesValidation="False" OnClick="btnLogin_Click"/>
+    <asp:Button ID="btnRegister" CssClass="btnRegister" runat="server" Text="注册" CausesValidation="False" OnClick="btnRegister_Click" />
     <asp:ContentPlaceHolder ID="AppHeaderEndAdd">
     </asp:ContentPlaceHolder>
     
