@@ -48,6 +48,8 @@
                         <td class="label">确认密码：</td>
                         <td>
                             <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword"
+                                ErrorMessage="请确认密码" CssClass="validator-message" Text="请确认密码" Display="Dynamic"></asp:RequiredFieldValidator>
                             <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="txtPassword"
                                 ControlToValidate="txtConfirmPassword" ErrorMessage="两次输入的密码不一致" CssClass="validator-message"
                                 Operator="Equal" Text="两次输入的密码不一致" Display="Dynamic"></asp:CompareValidator>
@@ -78,7 +80,7 @@
                     <tr>
                         <td colspan="2">
                             <%-- TODO --%>
-                            <asp:Button ID="btnRegister" runat="server" Text="注册" CssClass="button"/>
+                            <asp:Button ID="btnRegister" runat="server" Text="注册" CssClass="button" OnClick="btnRegister_Click"/>
                         </td>
                     </tr>
                     <tr>

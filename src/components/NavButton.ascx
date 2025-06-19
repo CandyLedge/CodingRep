@@ -6,6 +6,7 @@
 
 
 <asp:Literal runat="server" ID="dynamicCss"></asp:Literal>
+<asp:Literal runat="server" ID="Opposition"></asp:Literal>
 
 <style>
     .nav-button {
@@ -16,16 +17,20 @@
         text-align: center;
         position: relative;
         border-radius: 8px; /* 设置圆角 */
+        font-size: 12px;
     }
     
-        .nav-button:hover::after {
 
-        }
     
     .nav-icon {
         width: 20px; /* 图标的宽度 */
         height: 20px; /* 图标的高度 */
-        margin-top: 10px; /* 调整图标在方块中的位置 */
+        margin-top: 6px; /* 调整图标在方块中的位置 */
     }
+    
+    .nav-button {
+        cursor: pointer;
+    }
+
 </style>
 

@@ -31,7 +31,8 @@ namespace CodingRep.components
             get => imgNavIcon.Style["height"];
             set => imgNavIcon.Style["height"] = value;
         }
-        
+
+        public bool isOpposition { get; set; } = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +41,11 @@ namespace CodingRep.components
                 if (describeDisplay)
                 {
                     contentBind();
+                }
+
+                if (isOpposition)
+                {
+                    imageOpposition();
                 }
             }
         }
@@ -55,9 +61,18 @@ namespace CodingRep.components
             background-color: gray;
             border: 1px solid #ccc;
             color: white;
+            min-width: 50px; /* 设置最小宽度 */
             padding: 5px;
             z-index: 1;
-            border-radius: 5px;}</style>";
+            border-radius: 5px;
+            text-align: center; /* 文本居中显示 */}
+            </style>";
+        }
+
+        private void imageOpposition()
+        {
+            Opposition.Text =
+                @"<style>.nav-icon{filter: invert(1);}";
         }
     }
 }

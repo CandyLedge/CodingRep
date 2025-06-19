@@ -80,17 +80,22 @@
     <Content Include="Global.asax" />
     <Content Include="README.md" />
     <Content Include="src\assets\font\iconfont.svg" />
+    <Content Include="src\assets\icon\add.png" />
+    <Content Include="src\assets\images\bg\Register_bg.jpg" />
     <Content Include="src\assets\logo\logo.png" />
     <Content Include="src\assets\script\layui.js" />
     <Content Include="src\assets\style\AppHeader-Commom-Style.css" />
     <Content Include="src\assets\style\AppHeader-Login-Style.css" />
     <Content Include="src\assets\style\Index-Style.css" />
     <Content Include="src\assets\style\layui.css" />
+    <Content Include="src\assets\style\Register-Style.css" />
     <Content Include="src\components\NavButton.ascx" />
     <Content Include="src\test\Global.aspx" />
     <Content Include="src\test\WebForm1.aspx" />
     <Content Include="src\views\Index.aspx" />
+    <Content Include="src\views\Login.aspx" />
     <Content Include="src\views\Repo.aspx" />
+    <Content Include="src\views\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,12 +163,26 @@
     <Compile Include="src\views\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="src\views\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\views\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="src\views\Repo.aspx.cs">
       <DependentUpon>Repo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="src\views\Repo.aspx.designer.cs">
       <DependentUpon>Repo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\views\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -185,8 +204,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="src\api\" />
-    <Folder Include="src\assets\icon\" />
-    <Folder Include="src\assets\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
