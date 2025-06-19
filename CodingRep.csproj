@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env" />
+    <Content Include=".gitignore" />
     <Content Include="App_Data\init.sql" />
     <Content Include="Global.asax" />
     <Content Include="README.md" />
@@ -117,6 +118,7 @@
     <Content Include="src\assets\style\layui.css" />
     <Content Include="src\assets\style\Login-Style.css" />
     <Content Include="src\assets\style\Register-Style.css" />
+    <Content Include="src\assets\style\UserSetting-iframe-Style.css" />
     <Content Include="src\components\NavButton.ascx" />
     <Content Include="src\components\RepoListItem.ascx" />
     <Content Include="src\test\Global.aspx" />
@@ -127,6 +129,7 @@
     <Content Include="src\views\Login.aspx" />
     <Content Include="src\views\Repo.aspx" />
     <Content Include="src\views\Register.aspx" />
+    <Content Include="src\views\UserSetting.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +242,13 @@
     </Compile>
     <Compile Include="src\views\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\UserSetting.aspx.cs">
+      <DependentUpon>UserSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\views\UserSetting.aspx.designer.cs">
+      <DependentUpon>UserSetting.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

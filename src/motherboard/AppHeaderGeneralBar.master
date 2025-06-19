@@ -19,7 +19,7 @@
 
         <div class="avatar-container">
             <%-- TODO: 添加默认头像路径 --%>
-            <img id="userAvatar" alt="用户头像" class="rounded-circle avatar" />
+            <img id="userAvatar" alt="用户头像" class="rounded-circle avatar" runat="server" />
             <div class="dropdown-content">
                 <ul>
                     <li><asp:Button ID="btnPersonalRepo" runat="server" Text="个人仓库" CssClass="li-items" OnClick="btnPersonalRepo_Click"  /></li>

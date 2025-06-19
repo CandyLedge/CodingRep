@@ -7,7 +7,6 @@ namespace CodingRep.service.tool.impl
 {
     public class EmailSender : IEmailSender
     { 
-        // TODO 改成环境变量
         private readonly string emailAccount;
         private readonly string authCode;
         private readonly SmtpClient sharedSmtpClient;
