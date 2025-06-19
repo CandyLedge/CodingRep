@@ -473,6 +473,58 @@ namespace CodingRep.service.query
                 throw new Exception("获取提交记录失败: " + ex.Message, ex);
             }
         }
+        
+        /// <summary>
+        /// 获取所有分支的提交记录，并标记所属分支
+        /// </summary>
+        public List<CommitWithBranchInfo> GetAllBranchesCommits(int repoId)
+        {
+            try
+            {
+                var branches = GetRepositoryBranches(repoId);
+                var result = new List<CommitWithBranchInfo>();
+                
+                foreach (var branch in branches)
+                {
+                    
+                    if (branch.commitId.HasValue)
+                    {
+                        var commits = GetCommitHistory(branch.commitId.Value, 100);
+                        
+                        foreach (var commit in commits)
+                        {
+                            result.Add(new CommitWithBranchInfo
+                            {
+                                Commit = commit,
+                                BranchName = branch.name,
+                                IsDefaultBranch = IsBranchDefault(branch.name),
+                                IsHeadCommit = commit.id == branch.commitId.Value
+                            });
+                        }
+                    }
+                }
+                
+                // 按时间排序，最新的在前
+                return result.OrderByDescending(c => c.Commit.timestamp).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("获取所有分支提交记录失败: " + ex.Message, ex);
+            }
+        }
+        
+        #region 辅助类
+        /// <summary>
+        /// 带分支信息的提交记录
+        /// </summary>
+        public class CommitWithBranchInfo
+        {
+            public commits Commit { get; set; }
+            public string BranchName { get; set; }
+            public bool IsDefaultBranch { get; set; }
+            public bool IsHeadCommit { get; set; } // 是否是该分支的最新提交
+        }
+        #endregion
 
         /// <summary>
         /// 获取提交信息

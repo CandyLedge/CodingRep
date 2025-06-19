@@ -1,18 +1,110 @@
 .dashboard-container {
     display: flex;
+    position: relative;
+    min-height: 100vh;
     height: 100%;
+    background: url("https://files.codelife.cc/wallhaven/full/96/wallhaven-96gqz8.jpg?x-oss-process=image/resize,limit_0,m_fill,w_2560,h_1440/quality,Q_93/format,webp") no-repeat center center fixed;
+    background-size: cover;
 }
 
 .dashboard-sidebar {
     width: 15%;
-    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    background: rgba(128, 128, 128, 0.3); /* 保持遮罩颜色 */
+    /*z-index: 1; !* 确保不影响交互元素层级 *!*/
+    backdrop-filter: blur(5px); /* 增加高斯模糊效果，仅影响背景视觉 */
+}
+
+
+.dashboard-content {
+    width: 70%;
     padding: 20px;
     box-sizing: border-box;
 }
 
-.dashboard-content {
-    width: 70%;
-    background-color: #ffffff;
-    padding: 20px;
-    box-sizing: border-box;
+.repo-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
 }
+
+.repo-list-item:hover {
+    background-color: #f5f5f5;
+}
+
+.repo-list-item-title {
+    font-size: 16px;
+    color: #333;
+    flex: 1;
+}
+
+.repo-list-item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.repo-list-item-actions button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.repo-list-item-actions button:hover {
+    background-color: #0056b3;
+}
+
+.btnNewRepo {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-left: auto;
+    display: block;
+    cursor: pointer;
+}
+
+h2{
+    color:white;
+}
+
+.commit-record {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.commit-record:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.commit-record-item {
+    color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.commit-repo,
+.commit-branch,
+.commit-time,
+.commit-msg {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 60px;
+}
+
+

@@ -12,8 +12,7 @@ namespace CodingRep.src.motherboard
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userId"] == null) hlIcon.NavigateUrl = "../views/Index.aspx";
-            else hlIcon.NavigateUrl = "#";
-            // TODO 主页导航设置一下
+            else hlIcon.NavigateUrl = "../views/DashBoard.aspx";
         }
     }
 }

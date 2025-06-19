@@ -56,11 +56,11 @@ namespace CodingRep.src.views
                 }
 
                 // 方式3: 开发环境的默认值
-                if (IsDebugMode())
-                {
-                    _repoId = 1; // 开发时的默认仓库
-                    return true;
-                }
+                // if (IsDebugMode())
+                // {
+                //     _repoId = 1; // 开发时的默认仓库
+                //     return true;
+                // }
 
                 return false;
             }
@@ -169,10 +169,10 @@ namespace CodingRep.src.views
                 SetSidebarInfo(repo);
 
                 // 开发模式下显示调试信息
-                if (IsDebugMode())
-                {
-                    ShowDebugInfo();
-                }
+                // if (IsDebugMode())
+                // {
+                //     ShowDebugInfo();
+                // }
             }
             catch (Exception ex)
             {
@@ -202,6 +202,8 @@ namespace CodingRep.src.views
         {
             litOwnerName.Text = repo.users.userName;
             litRepoName.Text = repo.name;
+            barLitOwnerName.Text = repo.users.userName;
+            barLitRepoName.Text = repo.name;
             litRepoDescription.Text = repo.description ?? "No description provided";
             
             lblRepoStatus.Text = repo.isPrivate ? "Private" : "Public";

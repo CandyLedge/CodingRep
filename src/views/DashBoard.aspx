@@ -12,6 +12,7 @@
     <div class="dashboard-sidebar sidebar-left">
         <!-- 仓库列表 -->
         <h2>仓库列表</h2>
+        <asp:Button runat="server" ID="btnNewRepo" CssClass="btnNewRepo" Text="新建仓库" OnClick="btnNewRepo_Click"/>
         <ul id="repoList" runat="server">
             <!-- 动态内容占位符 -->
         </ul>

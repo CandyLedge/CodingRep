@@ -18,7 +18,26 @@ namespace CodingRep.src.motherboard
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            // TODO 读取头像
 
+        }
+
+        protected void btnPersonalRepo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../views/DashBoard.aspx");
+        }
+
+        protected void btnSettings_Click(object sender, EventArgs e)
+        {
+            // TODO 添加头像
+            
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("../views/Index.aspx");
         }
     }
 }

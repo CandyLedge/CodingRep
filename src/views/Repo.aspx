@@ -603,6 +603,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AppHeaderStartAdd" runat="server">
+    <span class="headerBarPath">
+        <asp:Literal ID="barLitOwnerName" runat="server" Text="CandyLedge" />
+        <span style="color: #586069;"> / </span>
+        <asp:Literal ID="barLitRepoName" runat="server" Text="CodingRep" />
+    </span>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="AppHeaderEndAdd" runat="server">

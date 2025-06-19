@@ -15,16 +15,16 @@
     
     <div class="right-panel-container">
         
-        <uc:NavButton runat="server" iconUrl="../assets/icon/add.png" isOpposition="True" text="新建仓库"></uc:NavButton>
+        <uc:NavButton runat="server" iconUrl="../assets/icon/add.png" isOpposition="True" text="新建仓库" navigateUrl="../views/CreateRepo.aspx"></uc:NavButton>
 
         <div class="avatar-container">
             <%-- TODO: 添加默认头像路径 --%>
             <img id="userAvatar" alt="用户头像" class="rounded-circle avatar" />
             <div class="dropdown-content">
                 <ul>
-                    <li><asp:Button ID="btnPersonalRepo" runat="server" Text="个人仓库" CssClass="li-items" /></li>
-                    <li><asp:Button ID="btnSettings" runat="server" Text="设置" CssClass="li-items" /></li>
-                    <li><asp:Button ID="btnLogout" runat="server" Text="登出" CssClass="li-items" /></li>
+                    <li><asp:Button ID="btnPersonalRepo" runat="server" Text="个人仓库" CssClass="li-items" OnClick="btnPersonalRepo_Click"  /></li>
+                    <li><asp:Button ID="btnSettings" runat="server" Text="设置" CssClass="li-items" OnClick="btnSettings_Click" /></li>
+                    <li><asp:Button ID="btnLogout" runat="server" Text="登出" CssClass="li-items" OnClick="btnLogout_Click" /></li>
                 </ul>
             </div>
         </div>

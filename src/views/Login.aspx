@@ -13,7 +13,9 @@
         <div>
             <div class="login-container">
                 <div class="display-area">
-                    <img src="display_image_url_here" alt="Display Image" style="max-width: 100%;"/> <!-- 替换为实际展示图片URL -->
+                    
+                    <img src="../assets/images/loginSide.jpg" alt="Display Image" style="width: 100%; height: 100%; object-fit: cover;" />
+                    
                 </div>
                 <div class="input-area">
                     <h2>CodingRep 登录</h2>
