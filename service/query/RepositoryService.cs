@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -481,30 +482,47 @@ namespace CodingRep.service.query
         {
             try
             {
-                var branches = GetRepositoryBranches(repoId);
+                var allCommits = _context.commits
+                    .Where(c => c.repoId == repoId)
+                    .Include("users")
+                    .OrderByDescending(c => c.timestamp)
+                    .ToList();
+
                 var result = new List<CommitWithBranchInfo>();
-                
-                foreach (var branch in branches)
+
+                foreach (var commit in allCommits)
                 {
-                    
-                    if (branch.commitId.HasValue)
+                    // 查找哪些分支指向这个提交
+                    var branchesPointingToThisCommit = _context.branches
+                        .Where(b => b.repoId == repoId && b.commitId == commit.id)
+                        .ToList();
+
+                    if (branchesPointingToThisCommit.Any())
                     {
-                        var commits = GetCommitHistory(branch.commitId.Value, 100);
-                        
-                        foreach (var commit in commits)
+                        foreach (var branch in branchesPointingToThisCommit)
                         {
                             result.Add(new CommitWithBranchInfo
                             {
                                 Commit = commit,
                                 BranchName = branch.name,
                                 IsDefaultBranch = IsBranchDefault(branch.name),
-                                IsHeadCommit = commit.id == branch.commitId.Value
+                                IsHeadCommit = true // 当前提交就是该分支的 head
                             });
                         }
                     }
+                    else
+                    {
+                        // 如果没有分支指向该提交，则标记为 "orphaned" 或匿名提交
+                        result.Add(new CommitWithBranchInfo
+                        {
+                            Commit = commit,
+                            BranchName = "[detached]",
+                            IsDefaultBranch = false,
+                            IsHeadCommit = false
+                        });
+                    }
                 }
-                
-                // 按时间排序，最新的在前
+
                 return result.OrderByDescending(c => c.Commit.timestamp).ToList();
             }
             catch (Exception ex)
