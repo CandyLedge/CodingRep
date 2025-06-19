@@ -109,7 +109,9 @@
     <Content Include="src\assets\logo\logo.png" />
     <Content Include="src\assets\script\layui.js" />
     <Content Include="src\assets\style\AppHeader-Commom-Style.css" />
+    <Content Include="src\assets\style\AppHeader-General-Style.css" />
     <Content Include="src\assets\style\AppHeader-Login-Style.css" />
+    <Content Include="src\assets\style\DashBoard-Style.css" />
     <Content Include="src\assets\style\Index-Style.css" />
     <Content Include="src\assets\style\layui.css" />
     <Content Include="src\assets\style\Login-Style.css" />
@@ -118,6 +120,7 @@
     <Content Include="src\test\Global.aspx" />
     <Content Include="src\test\WebForm1.aspx" />
     <Content Include="src\views\CreateRepo.aspx" />
+    <Content Include="src\views\DashBoard.aspx" />
     <Content Include="src\views\Index.aspx" />
     <Content Include="src\views\Login.aspx" />
     <Content Include="src\views\Repo.aspx" />
@@ -192,6 +195,13 @@
     </Compile>
     <Compile Include="src\views\CreateRepo.aspx.designer.cs">
       <DependentUpon>CreateRepo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\DashBoard.aspx.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\views\DashBoard.aspx.designer.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="src\views\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

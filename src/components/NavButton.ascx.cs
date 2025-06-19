@@ -5,6 +5,7 @@ namespace CodingRep.components
 {
     public partial class NavButton : UserControl
     {
+        // TODO 要做一个CSS区别化
         public string iconUrl
         {
             get => imgNavIcon.Src;
@@ -72,7 +73,7 @@ namespace CodingRep.components
         private void imageOpposition()
         {
             Opposition.Text =
-                @"<style>.nav-icon{filter: invert(1);}";
+                @"<style>.nav-icon{filter: invert(1);}</style>";
         }
     }
 }

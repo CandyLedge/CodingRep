@@ -22,7 +22,7 @@
             <header>
                 <div id="AppHeader-start">
                     <div id="AppHeader-logo">
-                        <asp:HyperLink runat="server"  NavigateUrl="~/">
+                        <asp:HyperLink runat="server"  NavigateUrl="#" ID="hlIcon">
                             <img src="../assets/logo/logo.png" alt="CodingRep" id="logo"/>
                         </asp:HyperLink>
                     <asp:ContentPlaceHolder runat="server" ID="AppHeaderStartAdd"></asp:ContentPlaceHolder>

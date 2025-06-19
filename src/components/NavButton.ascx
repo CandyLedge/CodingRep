@@ -11,8 +11,8 @@
 <style>
     .nav-button {
         display: inline-block;
-        width: 30px; /* 方形的宽度 */
-        height: 30px; /* 方形的高度 */
+        width: 25px; /* 方形的宽度 */
+        height: 25px; /* 方形的高度 */
         border: 1px solid #ccc; /* 外边框 */
         text-align: center;
         position: relative;
@@ -25,7 +25,7 @@
     .nav-icon {
         width: 20px; /* 图标的宽度 */
         height: 20px; /* 图标的高度 */
-        margin-top: 6px; /* 调整图标在方块中的位置 */
+        margin-top: 4px; /* 调整图标在方块中的位置 */
     }
     
     .nav-button {

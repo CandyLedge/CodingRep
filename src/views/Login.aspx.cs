@@ -26,7 +26,7 @@ namespace CodingRep.src.views
                 if (PasswordUtil.VerifyPassword(txtPassword.Text, user.Item1, user.Item2))
                 {
                     Session["userId"] = result.First().id;
-                    Response.Redirect("Repo.aspx");
+                    Response.Redirect("DashBoard.aspx");
                 }
                 else
                 {
