@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/src/motherboard/AppHeaderGlobalBar.Master" AutoEventWireup="true" CodeBehind="AppHeaderGeneralBar.master.cs" Inherits="CodingRep.src.motherboard.AppHeaderGeneralBar" %>
+<%@ Register Src="~/src/components/NavButton.ascx" TagPrefix="uc" TagName="NavButton" %>
+   
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="AppHeaderStartAdd" runat="server">
+    <asp:ContentPlaceHolder ID="AppHeaderStartAdd" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="AppHeaderEndAdd" runat="server">
+    
+    <uc:NavButton runat="server" ></uc:NavButton>
+    <uc:NavButton runat="server" iconUrl="../assets/icon/add.png" isOpposition="True" text="新建仓库"></uc:NavButton>
+    
+    <asp:ContentPlaceHolder ID="AppHeaderEndAdd" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contentContainer" runat="server">
+    <asp:ContentPlaceHolder ID="mainContainer" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

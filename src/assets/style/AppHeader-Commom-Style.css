@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#main-box {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+    max-width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+}
+
+#AppHeader-start {
+    display: flex;
+    align-items: center;
+}
+
+#AppHeader-logo {
+    margin-right: 20px;
+}
+
+#AppHeader-logo img {
+    height: 40px;
+    filter: invert(1);
+}

@@ -1,0 +1,144 @@
+
+## 登入功能描述
+
+### 规定了一下目录结构和代码样式
+
+
+## 一、目录结构
+
+- 根目录/
+  - Properties/
+  - packages/
+  - src/
+    - components/
+    - motherboard/
+    - api/
+    - assets/
+    - views/
+  - Global.asax
+  - Global.asax.cs
+  - README.md
+
+
+## 二、基础命名风格
+
+### 1. 禁止特殊符号
+- 命名不能以下划线 `_` 或美元符号 `$` 开头或结尾  
+  ❌ 反例：`_name`, `name$`
+
+### 2. 禁止拼音混合/中文
+- 严禁拼音与英文混合  
+  ❌ 反例：`getPingfenByName()`
+- 避免纯拼音命名
+
+### 3. 类名规范
+- 使用 `UpperCamelCase`（大驼峰）  
+  ✅ 正例：`UserService`
+- 例外：`DO/BO/DTO/VO/AO/PO/UID`  
+  ✅ 正例：`UserDO`
+
+### 4. 方法/变量名
+- 统一使用 `lowerCamelCase`（小驼峰）  
+  ✅ 正例：`getHttpMessage()`, `localValue`
+
+### 5. 常量名
+- 全部大写，单词间用下划线分隔  
+  ✅ 正例：`MAX_STOCK_COUNT`  
+  ❌ 反例：`maxCount`
+
+## 三、特殊场景命名
+
+### 1. 特定类型命名
+| 类型       | 规则                     | 示例               |
+|------------|--------------------------|--------------------|
+| 抽象类     | `Abstract`/`Base` 开头   | `AbstractService`  |
+| 异常类     | `Exception` 结尾         | `NotFoundException`|
+| 测试类     | 被测类名+`Test`          | `UserServiceTest`  |
+
+### 2. 其他规范
+- **数组定义**：类型与中括号紧邻  
+  ✅ 正例：`int[] array`  
+  ❌ 反例：`String args[]`
+
+- **布尔类型**：POJO 中不加 `is` 前缀  
+  ❌ 反例：`isDeleted`（易引发序列化错误）
+
+- **包名**：全小写，单数形式  
+  ✅ 正例：`com.alibaba.util`
+
+## 四、分层命名规约
+
+### Service/DAO 层
+| 操作类型   | 前缀        | 示例           |
+|------------|-------------|----------------|
+| 查询单条   | `get`       | `getUser()`    |
+| 查询多条   | `list`      | `listOrders()` |
+| 统计       | `count`     | `countUsers()` |
+| 新增       | `save`/`insert` | `saveOrder()` |
+| 删除       | `remove`/`delete` | `deleteUser()` |
+| 修改       | `update`    | `updateConfig()`|
+
+### 领域模型
+| 类型       | 后缀  | 示例       |
+|------------|-------|------------|
+| 数据对象   | `DO`  | `UserDO`   |
+| 数据传输对象 | `DTO` | `OrderDTO` |
+| 展示对象   | `VO`  | `UserVO`   |
+
+> 📌 POJO 是 `DO/DTO/BO/VO` 的统称，禁止使用 `xxxPOJO` 命名
+
+## 五、其他重要规则
+
+### 1. 杜绝不规范缩写
+❌ 反例：`AbstractClass` → `AbsClass`
+
+### 2. 设计模式体现
+✅ 正例：
+- `OrderFactory`（工厂模式）
+- `LoginProxy`（代理模式）
+
+### 3. 接口命名规范
+- 实现类加 `Impl` 后缀  
+  ✅ 正例：`CacheServiceImpl` 实现 `CacheService`
+- 能力型接口使用 `-able`  
+  ✅ 正例：`Runnable`, `Translatable`
+
+### 4. 枚举规范
+- 类名加 `Enum` 后缀
+- 成员全大写+下划线  
+  ✅ 正例：
+  ```java
+  public enum StatusEnum {
+      SUCCESS, FAILED
+  }
+
+#### 以上都还没有捏最好能遵守辣，不能遵守也没事0v0
+
+
+## V0.1
+**想做的事情**
+1.theme
+
+**已经完成的功能**
+登录
+半个注册(有加密，没有验证码)
+
+
+## 更新日志
+V0.0创建了项目
+
+V0.1添加了上栏的基本格式，前端的目录结构
+V0.1.1.1-3修复了BUG
+
+V0.1.1.1.4添加了数据库实体
+
+V0.1.1.2规定了后端的目录结构，添加了环境变量，新增了主页和对应样式
+
+V0.1.1.3添加了环境变量，设置了邮件的配置，添加了对于全局配置的存取
+
+V0.1.1.4添加用户注册功能- 新增注册页面 在项目中添加 UserRegisterUtils 类，用于处理用户注册相关逻辑
+
+V0.1.1.5完成了用户注册功能(未接入邮箱)，项目中添加了登录页面(未完善)，调整了数据库接入
+
+V0.1.1.6实现了用户登录功能，在未登入期间实现了错误访问的拦截跳转
+

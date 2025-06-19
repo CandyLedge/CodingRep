@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/src/motherboard/AppHeaderGlobalBar.Master.cs" Inherits="CodingRep.src.motherboard.AppHeaderGlobalBar" %>
+
+<!DOCTYPE html>
+
+
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    
+    <link rel="stylesheet" href="../assets/style/layui.css" />
+    <link rel="stylesheet" href="../assets/style/AppHeader-Commom-Style.css" />
+    <script src="../assets/script/layui.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id ="main-box">
+            <header>
+                <div id="AppHeader-start">
+                    <div id="AppHeader-logo">
+                        <asp:HyperLink runat="server"  NavigateUrl="~/">
+                            <img src="../assets/logo/logo.png" alt="CodingRep" id="logo"/>
+                        </asp:HyperLink>
+                    <asp:ContentPlaceHolder runat="server" ID="AppHeaderStartAdd"></asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <div id="AppHeader-end">
+                    <asp:ContentPlaceHolder runat="server" ID="AppHeaderEndAdd"></asp:ContentPlaceHolder>
+                </div>
+            </header>
+            
+            <asp:ContentPlaceHolder ID="contentContainer" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

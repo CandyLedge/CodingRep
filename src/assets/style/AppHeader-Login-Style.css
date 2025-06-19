@@ -1,0 +1,12 @@
+/* 登录注册按钮样式 */
+.btnLogin, .btnRegister {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #000000;
+    color: #ffffff;
+}
