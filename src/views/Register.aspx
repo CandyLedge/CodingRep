@@ -22,9 +22,13 @@
 
             <!-- 右侧注册表单区域 -->
             <div class="right-panel">
+                <div class="form-header">
+                    已经有帐号了？
+                    <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Login.aspx" CssClass="login-link">返回登录-></asp:HyperLink>
+                </div>
                 <table class="register-table">
                     <tr>
-                        <td colspan="2">用户注册</td>
+                        <td colspan="2" style="color:white;">用户注册</td>
                     </tr>
                     <tr>
                         <td class="label">用户名：</td>

@@ -12,7 +12,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="AppHeaderEndAdd" runat="server">
     
-    <uc:NavButton runat="server" ></uc:NavButton>
     <uc:NavButton runat="server" iconUrl="../assets/icon/add.png" isOpposition="True" text="新建仓库"></uc:NavButton>
     
     <asp:ContentPlaceHolder ID="AppHeaderEndAdd" runat="server">

@@ -55,3 +55,14 @@ body, html {
 .input-area .passkey-btn {
     background-color: #28a745;
 }
+
+
+.forgot-link {
+    color: #6a0dad;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}

@@ -23,10 +23,10 @@
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                     <div style="text-align: center;">
                         <asp:Button ID="btnLogin" runat="server" Text="登录" CssClass="login-btn" OnClick="loginBtn_Click" />
-                        <asp:Button ID="btnPasskey" runat="server" Text="Passkey" CssClass="passkey-btn" />
+                        <asp:Button ID="btnRegister" runat="server" Text="前往注册" CssClass="passkey-btn" />
                     </div>
                     <div style="text-align: center; margin-top: 10px;">
-                        <a href="#">注册</a> | <a href="#">忘记登录信息</a>
+                        <asp:HyperLink ID="hlForgotLogin" runat="server" NavigateUrl="#" CssClass="forgot-link">忘记登录信息</asp:HyperLink>
                     </div>
                 </div>
             </div>
