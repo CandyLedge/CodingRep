@@ -1,4 +1,6 @@
 
+using System;
+using System.Configuration;
 using System.Runtime.Remoting.Channels;
 
 namespace CodingRep.service.stores
@@ -7,36 +9,50 @@ namespace CodingRep.service.stores
     {
         private readonly string _envFilePath;
 
-        public EnvironmentStore(string envFilePath = "../../.env")
+        public EnvironmentStore()
         {
-            _envFilePath = envFilePath;
+            _envFilePath = ConfigurationManager.AppSettings["EnvPath"];
+            System.Diagnostics.Debug.WriteLine("EnvPath from config: " + _envFilePath);
             loadEnvironmentVariables();
         }
 
         private void loadEnvironmentVariables()
         {
-            string expandedPath = System.Environment.ExpandEnvironmentVariables(_envFilePath);
-            if (System.IO.File.Exists(expandedPath))
+            string path = _envFilePath;
+
+
+            // 普通相对路径+程序基目录=绝对路径，咕
+            path = System.IO.Path.GetFullPath(
+                System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path));
+
+            System.Diagnostics.Debug.WriteLine("加载 .env 文件路径: " + path);
+
+            if (System.IO.File.Exists(path))
             {
-                foreach (string line in System.IO.File.ReadAllLines(expandedPath))
+                foreach (var line in System.IO.File.ReadAllLines(path))
                 {
-                    if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-                    {
-                        string[] parts = line.Split(new[] { '=' }, 2);
-                        if (parts.Length == 2)
-                        {
-                            string key = parts[0].Trim();
-                            string value = parts[1].Trim();
+                    if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+                        continue;
 
-                            // Remove quotes if present
-                            if (value.StartsWith("\"") && value.EndsWith("\""))
-                                value = value.Substring(1, value.Length - 1);
+                    var parts = line.Split(new[] { '=' }, 2);
+                    if (parts.Length != 2)
+                        continue;
 
-                            System.Environment.SetEnvironmentVariable(key, value);
-                        }
-                    }
+                    var key = parts[0].Trim();
+                    var value = parts[1].Trim();
+
+                    if (value.StartsWith("\"") && value.EndsWith("\""))
+                        value = value.Substring(1, value.Length - 2);
+
+                    System.Environment.SetEnvironmentVariable(key, value);
+                    System.Diagnostics.Debug.WriteLine($"加载环境变量: {key}={value}");
                 }
             }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("未找到 .env 文件: " + path);
+            }
         }
+
     }
 }

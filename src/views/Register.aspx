@@ -71,8 +71,8 @@
                                     <div class="verification-code-box">
                                         <asp:TextBox ID="txtVerificationCode" runat="server" CssClass="verification-code-input"></asp:TextBox>
                                         <asp:Button ID="btnGetVerificationCode" runat="server" Text="获取验证码" CssClass="verification-code-button" CausesValidation="False" OnClick="btnGetVerificationCode_Click" />
-                                        <asp:Label runat="server" ID="lblVerificationCode"></asp:Label>
                                     </div>
+                                    <asp:Label runat="server" ID="lblVerificationCode"></asp:Label>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </td>
