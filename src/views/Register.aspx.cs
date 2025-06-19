@@ -16,8 +16,6 @@ namespace CodingRep.src.views
     public partial class Register : System.Web.UI.Page
     {
         private ModelDb db = new ModelDb();
-        private readonly ConcurrentDictionary<string, (string Code, DateTime SendTime)> codeCache 
-            = new ConcurrentDictionary<string, (string,DateTime)>();
 
         private readonly int expiryMinutes = 5;
         protected void Page_Load(object sender, EventArgs e)
@@ -31,23 +29,25 @@ namespace CodingRep.src.views
             string email = txtEmail.Text.Trim();
             string inputCode = txtVerificationCode.Text.Trim();
 
-            if (!codeCache.TryGetValue(email, out var cachedCode))
+            var cached = Session[email] as Tuple<string, DateTime>;
+            if (cached == null)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('请先获取验证码');", true);
                 return;
             }
 
-            if ((DateTime.Now - cachedCode.SendTime).TotalMinutes > expiryMinutes)
+            if ((DateTime.Now - cached.Item2).TotalMinutes > expiryMinutes)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('验证码已过期，请重新获取');", true);
                 return;
             }
 
-            if (inputCode != cachedCode.Code)
+            if (inputCode != cached.Item1)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('邮箱验证码错误');", true);
                 return;
             }
+
 
             // 验证后注册
             var user = db.users.Where(u => u.userName == txtUsername.Text).ToList();
@@ -69,7 +69,7 @@ namespace CodingRep.src.views
 
             db.users.Add(newUser);
             db.SaveChanges();
-            codeCache.TryRemove(email, out _); // 注册成功后移除验证码
+            Session.Remove(email); // 注册成功后移除验证码
 
             ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('注册成功');", true);
             txtUsername.Text = txtEmail.Text = txtPassword.Text = txtVerificationCode.Text = "";
