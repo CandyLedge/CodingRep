@@ -13,7 +13,7 @@ namespace CodingRep.src.motherboard
         {
             if (Session["userId"] == null)
             {
-                Response.Redirect("~/src/views/Index.aspx");
+                Response.Redirect("../views/Index.aspx");
             }
         }
         protected void Page_Load(object sender, EventArgs e)

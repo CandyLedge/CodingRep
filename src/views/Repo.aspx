@@ -20,7 +20,7 @@
         }
         
         .repo-title { 
-            font-size: 24px;          
+            font-size: 24px;
             font-weight: 600; 
             color: #0366d6; 
             text-decoration: none; 
