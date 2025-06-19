@@ -10,6 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+         <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <div class="container">
             <!-- 左侧装饰区域 -->
             <div class="left-panel">
@@ -66,17 +67,21 @@
                                 Text="邮箱格式不正确" Display="Dynamic"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="label">验证码：</td>
-                        <td>
-                            <div class="verification-code-box">
-                                <asp:TextBox ID="txtVerificationCode" runat="server" CssClass="verification-code-input"></asp:TextBox>
-                                <asp:Button ID="btnGetVerificationCode" runat="server" Text="获取验证码" CssClass="verification-code-button" />
-                            </div>
-                            <asp:RequiredFieldValidator ID="rfvVerificationCode" runat="server" ControlToValidate="txtVerificationCode"
-                                ErrorMessage="请输入验证码" CssClass="validator-message" Text="请输入验证码" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
+                   <tr>
+                       <td class="label">验证码：</td>
+                       <td>
+                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                               <ContentTemplate>
+                                   <div class="verification-code-box">
+                                       <asp:TextBox ID="txtVerificationCode" runat="server" CssClass="verification-code-input"></asp:TextBox>
+                                       <asp:Button ID="btnGetVerificationCode" runat="server" Text="获取验证码" CssClass="verification-code-button" />
+                                   </div>
+                               </ContentTemplate>  
+                           </asp:UpdatePanel>
+                           <asp:RequiredFieldValidator ID="rfvVerificationCode" runat="server" ControlToValidate="txtVerificationCode"
+                               ErrorMessage="请输入验证码" CssClass="validator-message" Text="请输入验证码" Display="Dynamic"></asp:RequiredFieldValidator>
+                       </td>
+                   </tr>
                     <tr>
                         <td colspan="2">
                             <%-- TODO --%>

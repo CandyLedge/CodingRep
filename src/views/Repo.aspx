@@ -5,7 +5,7 @@
         /* ========== 调整整体容器大小 - 更居中 ========== */
         .repo-container { 
             max-width: none !important;   
-            width: 78% !important;        /* 🔧 从85%缩小到78% - 更居中 */
+            width: 78% !important;        
             margin: 0 auto;           
             padding: 25px;            
         }
@@ -90,6 +90,88 @@
             color: #24292e; 
         }
         
+        /* ========== 文件上传区域样式 ========== */
+        .upload-section {
+            background: white;
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none; /* 默认隐藏，点击上传按钮时显示 */
+        }
+        
+        .upload-section.show {
+            display: block;
+        }
+        
+        .upload-tabs {
+            display: flex;
+            border-bottom: 1px solid #d1d5da;
+            margin-bottom: 15px;
+        }
+        
+        .upload-tab {
+            padding: 10px 15px;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            color: #586069;
+            font-weight: 500;
+        }
+        
+        .upload-tab.active {
+            border-bottom-color: #0366d6;
+            color: #0366d6;
+        }
+        
+        .upload-content {
+            display: none;
+        }
+        
+        .upload-content.active {
+            display: block;
+        }
+        
+        .file-upload-area {
+            border: 2px dashed #d1d5da;
+            border-radius: 6px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .file-upload-area:hover {
+            border-color: #0366d6;
+            background-color: #f6f8fa;
+        }
+        
+        .file-upload-area.dragover {
+            border-color: #0366d6;
+            background-color: #e6f3ff;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #586069;
+            margin-bottom: 10px;
+        }
+        
+        .upload-text {
+            color: #586069;
+            margin-bottom: 15px;
+        }
+        
+        .file-input {
+            margin-bottom: 10px;
+        }
+        
+        .upload-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
         /* ========== 文件浏览器 ========== */
         .file-browser { 
             background: white; 
@@ -136,6 +218,42 @@
             font-size: 14px;          
         }
         
+        .file-actions {
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .file-item:hover .file-actions {
+            opacity: 1;
+        }
+        
+        .file-action-btn {
+            padding: 4px 8px;
+            border: 1px solid #d1d5da;
+            border-radius: 4px;
+            background: white;
+            color: #586069;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .file-action-btn:hover {
+            background: #f6f8fa;
+            text-decoration: none;
+        }
+        
+        .file-action-btn.delete {
+            color: #d73a49;
+            border-color: #d73a49;
+        }
+        
+        .file-action-btn.delete:hover {
+            background: #ffeef0;
+        }
+        
         /* ========== 数据绑定的分支选择器 ========== */
         .branch-selector {
             position: relative;
@@ -170,61 +288,6 @@
             border-color: #0366d6;
             box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.2);
             background: white;
-        }
-        
-        /* 🔧 美化的下拉箭头 */
-        .branch-selector::after {
-            content: '';
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 7px solid #586069;
-            pointer-events: none;
-            transition: transform 0.2s ease;
-        }
-        
-        .branch-dropdown:focus + .branch-selector::after,
-        .branch-selector:hover::after {
-            border-top-color: #0366d6;
-        }
-        
-        /* 🔧 数据绑定的下拉选项样式 */
-        .branch-dropdown option {
-            padding: 10px 15px;
-            background: white;
-            color: #24292e;
-            font-size: 16px;
-        }
-        
-        /* 🔧 针对不同浏览器的下拉框优化 */
-        @-moz-document url-prefix() {
-            .branch-dropdown {
-                padding-right: 30px;
-            }
-        }
-        
-        /* Webkit浏览器滚动条优化 */
-        .branch-dropdown::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        .branch-dropdown::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 5px;
-        }
-        
-        .branch-dropdown::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 5px;
-        }
-        
-        .branch-dropdown::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
         }
         
         /* ========== 左侧信息区域 ========== */
@@ -274,12 +337,6 @@
             width: 100% !important;            
         }
         
-        /* 🔧 确保主内容区域使用所有可用空间 */
-        .main-content > div:first-child {
-            min-width: 0;                      
-            width: 100%;                       
-        }
-        
         /* ========== 响应式设计 ========== */
         @media (max-width: 1200px) {            
             .main-content { 
@@ -304,7 +361,7 @@
             }
         }
         
-        /* ========== 放大的按钮样式 ========== */
+        /* ========== 按钮样式 ========== */
         .btn { 
             display: inline-flex;
             align-items: center;
@@ -351,9 +408,15 @@
             border-color: #0860ca;
         }
         
-        /* 🔧 按钮图标大小 */
-        .btn span {
-            font-size: 18px;          
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+            border-color: #5a6268;
         }
         
         /* ========== 语言统计条 ========== */
@@ -424,63 +487,117 @@
             font-size: 16px;          
         }
         
-        /* ========== 🚧 未来功能标记 ========== */
-        .future-feature {
-            position: relative;
-            opacity: 0.6;
-            cursor: not-allowed;
+        /* ========== 消息提示样式 ========== */
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
         }
         
-        .future-feature::after {
-            content: '🚧 Coming Soon';
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
+        .message {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s ease;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .message.warning {
             background: #fff3cd;
             color: #856404;
-            padding: 4px 8px;         
-            border-radius: 4px;
-            font-size: 12px;          
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.2s;
+            border: 1px solid #ffeaa7;
         }
         
-        .future-feature:hover::after {
-            opacity: 1;
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        /* Add these styles to your existing CSS */
+        
+        /* Delete repository button styling */
+        .btn-danger { 
+            background: #dc3545; 
+            color: white; 
+            border-color: #dc3545; 
         }
         
-        /* ========== 🔄 预留功能区域 ========== */
-        .reserved-section {
-            border: 2px dashed #d1d5da;
-            border-radius: 6px;
-            padding: 25px;            
-            margin: 20px 0;
-            text-align: center;
-            color: #586069;
-            background: #f8f9fa;
+        .btn-danger:hover { 
+            background: #c82333; 
+            border-color: #bd2130;
+            transform: translateY(-1px);  
+            box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
         }
         
-        .reserved-section h4 {
-            margin: 0 0 10px 0;
+        /* Confirmation dialog styling */
+        .delete-confirmation-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+        }
+        
+        .delete-confirmation-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .delete-confirmation-title {
+            color: #dc3545;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .delete-confirmation-text {
+            margin-bottom: 20px;
+            line-height: 1.5;
             color: #24292e;
-            font-size: 16px;          
         }
         
-        .reserved-section p {
-            margin: 0;
-            font-size: 14px;          
+        .delete-confirmation-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #d1d5da;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
         }
         
-        /* ========== 🔧 强制覆盖可能的父级限制 ========== */
-        body .repo-container {
-            max-width: none !important;
-            width: 78% !important;
+        .delete-confirmation-input:focus {
+            outline: none;
+            border-color: #dc3545;
         }
         
-        body .main-content {
-            width: 100% !important;
+        .delete-confirmation-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
         }
     </style>
 </asp:Content>
@@ -493,140 +610,116 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="mainContainer" runat="server">
     <div class="repo-container">
-        <!-- 🔧 数据绑定的仓库头部 -->
+        <!-- 仓库头部 -->
         <div class="repo-header">
             <h1 style="margin: 0; font-size: 24px;">
-                <!-- 🔧 数据绑定：仓库所有者和名称 -->
                 <asp:Literal ID="litOwnerName" runat="server" Text="CandyLedge" />
                 <span style="color: #586069;"> / </span>
                 <asp:Literal ID="litRepoName" runat="server" Text="CodingRep" />
-                
-                <!-- 🔧 数据绑定：动态Public/Private状态 -->
                 <asp:Label ID="lblRepoStatus" runat="server" CssClass="repo-status public" Text="Public" />
             </h1>
             
-            <!-- 🔧 数据绑定：仓库描述 -->
             <p class="repo-meta">
                 <asp:Literal ID="litRepoDescription" runat="server" Text="A coding repository for various projects and experiments" />
             </p>
             
             <div class="repo-stats">
-                <!-- 🔧 数据绑定：创建日期、提交数、主要语言 -->
                 <span>📅 Created <asp:Literal ID="litCreateDate" runat="server" Text="2024-01-15" /></span>
                 <span>📝 <asp:Literal ID="litCommitCount" runat="server" Text="5" /> commits</span>
                 <span style="color: #f1e05a;">● <asp:Literal ID="litMainLanguage" runat="server" Text="JavaScript" /></span>
             </div>
         </div>
 
-        <!-- 🔧 导航栏 -->
+        <!-- 导航栏 -->
         <div class="repo-nav">
             <div class="nav-tabs">
                 <a href="#" class="nav-tab active">📄 Code</a>
-                <a href="#" class="nav-tab">📝 Commits</a>
-                <a href="#" class="nav-tab">🌿 Branches</a>
-                <!-- 🚧 未来功能标记 -->
-                <a href="#" class="nav-tab future-feature">⚡ Actions</a>
-                <a href="#" class="nav-tab future-feature">🛡 Security</a>
             </div>
         </div>
 
-        <!-- 🔧 居中的主要内容区域 -->
+        <!-- 文件上传区域 -->
+        <div id="uploadSection" class="upload-section">
+            <div class="upload-tabs">
+                <div class="upload-tab active" onclick="switchUploadTab('single')">📄 单文件上传</div>
+                <div class="upload-tab" onclick="switchUploadTab('multiple')">📁 多文件上传</div>
+            </div>
+            
+            <!-- 单文件上传 -->
+            <div id="singleUpload" class="upload-content active">
+                <div class="file-upload-area">
+                    <div class="upload-icon">📤</div>
+                    <div class="upload-text">选择文件或拖拽到此处</div>
+                    <asp:FileUpload ID="fileUploadSingle" runat="server" CssClass="file-input" />
+                </div>
+                <div class="upload-buttons">
+                    <asp:Button ID="btnUploadSingle" runat="server" Text="📤 上传文件" CssClass="btn btn-upload" OnClick="btnUploadSingle_Click" />
+                    <input type="button" class="btn btn-secondary" value="取消" onclick="hideUploadSection()" />
+                </div>
+            </div>
+            
+            <!-- 多文件上传 -->
+            <div id="multipleUpload" class="upload-content">
+                <div class="file-upload-area">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">选择多个文件或拖拽文件夹到此处</div>
+                    <input type="file" id="fileUploadMultiple" multiple="multiple" class="file-input" />
+                </div>
+                <div class="upload-buttons">
+                    <asp:Button ID="btnUploadMultiple" runat="server" Text="📁 批量上传" CssClass="btn btn-upload" OnClick="btnUploadMultiple_Click" />
+                    <input type="button" class="btn btn-secondary" value="取消" onclick="hideUploadSection()" />
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
         <div class="main-content">
-            <!-- 🔧 左侧主内容 -->
+            <!-- 左侧主内容 -->
             <div>
-                <!-- 🔧 文件浏览器 -->
+                <!-- 文件浏览器 -->
                 <div class="file-browser">
                     <div class="file-header">
                         <div class="file-header-left">
                             <span style="font-size: 16px;">🌿</span>
                             
-                            <!-- 🔧 TODO: 在Page_Load中绑定分支数据，添加OnSelectedIndexChanged事件 -->
                             <div class="branch-selector">
-                                <asp:DropDownList ID="ddlBranches" runat="server" CssClass="branch-dropdown" AutoPostBack="true">
-                                    <asp:ListItem Text=" main" Value="main" Selected="True" />
-                                    <asp:ListItem Text=" develop" Value="develop" />
-                                    <asp:ListItem Text=" feature/new-ui" Value="feature" />
-                                    <asp:ListItem Text=" hotfix/bug-fix" Value="hotfix" />
+                                <asp:DropDownList ID="ddlBranches" runat="server" CssClass="branch-dropdown" AutoPostBack="true" OnSelectedIndexChanged="ddlBranches_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </div>
                             
-                            <!-- 🔧 数据绑定：提交数量 -->
                             <span class="commit-info">• <asp:Literal ID="litBranchCommits" runat="server" Text="5" /> commits</span>
                         </div>
                         <div class="file-header-right">
-                            <!-- 🔧 TODO: 添加OnClick事件 -->
-                            <asp:Button ID="btnUpload" runat="server" Text="📤 Upload" CssClass="btn btn-upload" />
-                            <asp:Button ID="btnDownload" runat="server" Text="📥 Download" CssClass="btn btn-primary" />
+                            <input type="button" class="btn btn-upload" value="📤 Upload" onclick="showUploadSection()" />
+                            <asp:Button ID="btnDownload" runat="server" Text="📥 Download" CssClass="btn btn-primary" OnClick="btnDownload_Click" />
                         </div>
                     </div>
                     
-                    <!-- 🔧 数据绑定的文件列表 -->
+                    <!-- 文件列表 -->
                     <div class="file-list">
-                        <!-- 🔧 示例静态数据，用于预览效果 -->
-                        <div class="file-item">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 16px;">📁</span>
-                                <a href="#" class="file-name">src</a>
-                            </div>
-                            <div class="file-meta">
-                                <span>Initial commit</span> • 
-                                <span>CandyLedge</span> • 
-                                <span>2024-01-15 10:30</span>
-                            </div>
-                        </div>
-                        <div class="file-item">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 16px;">📄</span>
-                                <a href="#" class="file-name">README.md</a>
-                            </div>
-                            <div class="file-meta">
-                                <span>Update README</span> • 
-                                <span>CandyLedge</span> • 
-                                <span>2024-01-16 14:20</span>
-                            </div>
-                        </div>
-                        <div class="file-item">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 16px;">⚙️</span>
-                                <a href="#" class="file-name">package.json</a>
-                            </div>
-                            <div class="file-meta">
-                                <span>Add dependencies</span> • 
-                                <span>CandyLedge</span> • 
-                                <span>2024-01-17 09:15</span>
-                            </div>
-                        </div>
-                        <div class="file-item">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 16px;">🎨</span>
-                                <a href="#" class="file-name">styles.css</a>
-                            </div>
-                            <div class="file-meta">
-                                <span>Update styling</span> • 
-                                <span>CandyLedge</span> • 
-                                <span>2024-01-18 16:45</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 🔧 实际的Repeater控件（数据绑定时使用） -->
-                        <asp:Repeater ID="rptFiles" runat="server" Visible="false">
+                        <asp:Repeater ID="rptFiles" runat="server">
                             <ItemTemplate>
                                 <div class="file-item">
-                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
                                         <span style="font-size: 16px;"><%# Eval("FileIcon") %></span>
                                         <asp:LinkButton ID="lnkFileName" runat="server" CssClass="file-name" 
-                                            Text='<%# Eval("FileName") %>' CommandArgument='<%# Eval("FileId") %>' />
+                                            Text='<%# Eval("FileName") %>' CommandArgument='<%# Eval("FileId") %>' OnClick="lnkFileName_Click" />
                                     </div>
-                                    <div class="file-meta">
-                                        <span><%# Eval("LastCommitMessage") %></span> • 
-                                        <span><%# Eval("LastCommitAuthor") %></span> • 
-                                        <span><%# Eval("LastCommitTime", "{0:yyyy-MM-dd HH:mm}") %></span>
+                                    <div style="display: flex; align-items: center; gap: 15px;">
+                                        <div class="file-meta">
+                                            <span><%# Eval("LastCommitMessage") %></span> • 
+                                            <span><%# Eval("LastCommitAuthor") %></span> • 
+                                            <span><%# Eval("LastCommitTime", "{0:yyyy-MM-dd HH:mm}") %></span>
+                                        </div>
+                                        <div class="file-actions">
+                                            <asp:Button ID="btnDeleteFile" runat="server" Text="🗑️" CssClass="file-action-btn delete" 
+                                                CommandArgument='<%# Eval("FilePath") %>' OnClick="btnDeleteFile_Click" 
+                                                OnClientClick="return confirm('确定要删除这个文件吗？');" />
+                                        </div>
                                     </div>
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>
                         
-                        <!-- 🔧 空状态面板 -->
                         <asp:Panel ID="pnlNoFiles" runat="server" Visible="false" CssClass="empty-state">
                             <div class="empty-state-icon">📁</div>
                             <h3>This repository is empty</h3>
@@ -635,50 +728,14 @@
                     </div>
                 </div>
 
-                <!-- 🔧 🔄 预留的代码编辑器区域 -->
-                <div class="reserved-section">
-                    <h4>🔄 Code Editor (Reserved)</h4>
-                    <p>Future: Inline code editing and preview functionality</p>
-                </div>
-
-                <!-- 🔧 数据绑定的最近提交记录 -->
+                <!-- 最近提交记录 -->
                 <div class="commits-section">
                     <h3 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
                         <span>📝</span>
                         Recent Commits
                     </h3>
                     
-                    <!-- 🔧 示例静态数据，用于预览效果 -->
-                    <div class="commit-item">
-                        <div class="commit-message">
-                            Add new feature for file upload
-                        </div>
-                        <div class="commit-meta">
-                            <span>👤 CandyLedge</span> • 
-                            <span>🕒 2024-01-18 16:45</span>
-                        </div>
-                    </div>
-                    <div class="commit-item">
-                        <div class="commit-message">
-                            Fix bug in branch switching
-                        </div>
-                        <div class="commit-meta">
-                            <span>👤 CandyLedge</span> • 
-                            <span>🕒 2024-01-17 11:30</span>
-                        </div>
-                    </div>
-                    <div class="commit-item">
-                        <div class="commit-message">
-                            Update documentation and improve UI
-                        </div>
-                        <div class="commit-meta">
-                            <span>👤 CandyLedge</span> • 
-                            <span>🕒 2024-01-16 14:20</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 🔧 实际的Repeater控件（数据绑定时使用） -->
-                    <asp:Repeater ID="rptCommits" runat="server" Visible="false">
+                    <asp:Repeater ID="rptCommits" runat="server">
                         <ItemTemplate>
                             <div class="commit-item">
                                 <div class="commit-message">
@@ -692,7 +749,6 @@
                         </ItemTemplate>
                     </asp:Repeater>
                     
-                    <!-- 🔧 无提交记录面板 -->
                     <asp:Panel ID="pnlNoCommits" runat="server" Visible="false" CssClass="empty-state">
                         <div class="empty-state-icon">📝</div>
                         <h3>No commits yet</h3>
@@ -701,7 +757,7 @@
                 </div>
             </div>
 
-            <!-- 🔧 右侧侧边栏 - 数据绑定 -->
+            <!-- 右侧侧边栏 -->
             <div>
                 <div class="sidebar">
                     <div class="sidebar-section">
@@ -715,32 +771,13 @@
                         </div>
                     </div>
 
-                    <!-- 🔧 数据绑定的分支信息 -->
                     <div class="sidebar-section">
                         <div class="sidebar-title">🌿 Branches</div>
                         <p style="font-size: 13px; color: #586069; margin-bottom: 10px;">
                             <asp:Literal ID="litBranchCount" runat="server" Text="4" /> branches
                         </p>
-                        <!-- 🔧 示例静态数据 -->
-                        <div style="font-size: 13px; line-height: 1.5;">
-                            <div style="margin-bottom: 3px;">🌟 main (default)</div>
-                            <div style="margin-bottom: 3px;">🚀 develop</div>
-                            <div style="margin-bottom: 3px;">✨ feature/new-ui</div>
-                            <div>🔧 hotfix/bug-fix</div>
-                        </div>
-                        
-                        <!-- 🔧 实际的Repeater控件（数据绑定时使用） -->
-                        <asp:Repeater ID="rptBranches" runat="server" Visible="false">
-                            <ItemTemplate>
-                                <div style="margin-bottom: 3px;">
-                                    <%# Eval("BranchIcon") %> <%# Eval("BranchDisplayName") %>
-                                    <%# Eval("IsDefault").ToString() == "True" ? " (default)" : "" %>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
                     </div>
 
-                    <!-- 🔧 数据绑定的活动信息 -->
                     <div class="sidebar-section">
                         <div class="sidebar-title">📝 Activity</div>
                         <p style="font-size: 13px; color: #586069; margin-bottom: 6px;">
@@ -751,7 +788,6 @@
                         </p>
                     </div>
 
-                    <!-- 🔧 数据绑定的所有者信息 -->
                     <div class="sidebar-section">
                         <div class="sidebar-title">👤 Owner</div>
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -764,40 +800,11 @@
                         </div>
                     </div>
 
-                    <!-- 🚧 未来功能区域 -->
-                    <div class="sidebar-section future-feature">
-                        <div class="sidebar-title">🚧 Releases</div>
-                        <p style="font-size: 13px; color: #586069;">Coming soon...</p>
-                    </div>
-
-                    <!-- 🔧 数据绑定的语言统计 -->
                     <div class="sidebar-section">
                         <div class="sidebar-title">💻 Languages</div>
-                        <div class="language-bar">
-                            <!-- 🔧 示例静态语言条 -->
-                            <div class="language-segment" style="width: 85.2%; background: #f1e05a;"></div>
-                            <div class="language-segment" style="width: 10.1%; background: #e34c26;"></div>
-                            <div class="language-segment" style="width: 4.7%; background: #563d7c;"></div>
-                        </div>
+                        <div class="language-bar"></div>
                         
-                        <!-- 🔧 示例静态语言列表 -->
-                        <div style="font-size: 13px; line-height: 1.5;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                                <span><span style="color: #f1e05a;">●</span> JavaScript</span>
-                                <span>85.2%</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                                <span><span style="color: #e34c26;">●</span> HTML</span>
-                                <span>10.1%</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span><span style="color: #563d7c;">●</span> CSS</span>
-                                <span>4.7%</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 🔧 实际的Repeater控件（数据绑定时使用） -->
-                        <asp:Repeater ID="rptLanguages" runat="server" Visible="false">
+                        <asp:Repeater ID="rptLanguages" runat="server">
                             <ItemTemplate>
                                 <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
                                     <span><span style="color: <%# Eval("LanguageColor") %>;">●</span> <%# Eval("LanguageName") %></span>
@@ -810,4 +817,84 @@
             </div>
         </div>
     </div>
+
+    <!-- 消息提示容器 -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script type="text/javascript">
+        // 显示上传区域
+        function showUploadSection() {
+            document.getElementById('uploadSection').classList.add('show');
+        }
+
+        // 隐藏上传区域
+        function hideUploadSection() {
+            document.getElementById('uploadSection').classList.remove('show');
+        }
+
+        // 切换上传标签
+        function switchUploadTab(type) {
+            // 移除所有活动状态
+            var tabs = document.querySelectorAll('.upload-tab');
+            var contents = document.querySelectorAll('.upload-content');
+            
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            
+            // 添加活动状态
+            event.target.classList.add('active');
+            document.getElementById(type + 'Upload').classList.add('active');
+        }
+
+        // 消息提示函数
+        function showMessage(message, type) {
+            var container = document.getElementById('messageContainer');
+            var messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + type;
+            messageDiv.innerHTML = message;
+            
+            container.appendChild(messageDiv);
+            
+            // 3秒后自动移除
+            setTimeout(function() {
+                if (messageDiv.parentNode) {
+                    messageDiv.parentNode.removeChild(messageDiv);
+                }
+            }, 3000);
+        }
+
+        // 拖拽上传功能
+        window.onload = function() {
+            var uploadAreas = document.querySelectorAll('.file-upload-area');
+            
+            for (var i = 0; i < uploadAreas.length; i++) {
+                var area = uploadAreas[i];
+                
+                area.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+                
+                area.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                });
+                
+                area.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    
+                    var files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        showMessage('检测到 ' + files.length + ' 个文件，请点击上传按钮完成上传', 'success');
+                    }
+                });
+            }
+        };
+    </script>
+    
 </asp:Content>
