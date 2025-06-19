@@ -23,7 +23,7 @@
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                     <div style="text-align: center;">
                         <asp:Button ID="btnLogin" runat="server" Text="登录" CssClass="login-btn" OnClick="loginBtn_Click" />
-                        <asp:Button ID="btnRegister" runat="server" Text="前往注册" CssClass="passkey-btn" />
+                        <asp:HyperLink ID="hlRegister" runat="server" NavigateUrl="Register.aspx" CssClass="hlRegister">前往注册</asp:HyperLink>
                     </div>
                     <div style="text-align: center; margin-top: 10px;">
                         <asp:HyperLink ID="hlForgotLogin" runat="server" NavigateUrl="#" CssClass="forgot-link">忘记登录信息</asp:HyperLink>

@@ -52,9 +52,6 @@ body, html {
     background-color: #6a0dad;
     margin-right: 10px;
 }
-.input-area .passkey-btn {
-    background-color: #28a745;
-}
 
 
 .forgot-link {
@@ -66,3 +63,20 @@ body, html {
 .forgot-link:hover {
     text-decoration: underline;
 }
+
+.input-area .hlRegister {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    background-color: #6a0dad;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.input-area .hlRegister:hover {
+    opacity: 0.9;
+}
+
