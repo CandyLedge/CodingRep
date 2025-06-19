@@ -69,7 +69,7 @@
                     </tr>
                     <tr>
                         <td class="label">验证码：</td>
-                        <td>
+                        <td> 
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <div class="verification-code-box">

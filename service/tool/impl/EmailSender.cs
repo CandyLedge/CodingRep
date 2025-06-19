@@ -5,7 +5,7 @@ using System.Net.Mail;
 namespace CodingRep.service.tool.impl
 {
     public class EmailSender : IEmailSender
-    {
+    { 
         // TODO 改成环境变量
         private readonly string emailAccount = "codingrep@yeah.net";
         private readonly string authCode = "ETVF9ataPkPhGewu";

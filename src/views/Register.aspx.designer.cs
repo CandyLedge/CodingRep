@@ -149,7 +149,7 @@ namespace CodingRep.src.views
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGetVerificationCode;
 
-        /// <summary>
+        /// <summary> 
         /// lblVerificationCode control.
         /// </summary>
         /// <remarks>

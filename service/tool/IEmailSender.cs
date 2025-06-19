@@ -1,7 +1,7 @@
 namespace CodingRep.service.tool
 {
     public interface IEmailSender
-    {
+    { 
         /// <summary>
         /// 发送纯文本邮件（可用于简单通知）
         /// </summary>

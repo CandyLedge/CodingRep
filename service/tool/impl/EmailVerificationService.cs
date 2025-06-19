@@ -9,7 +9,7 @@ namespace CodingRep.utils
     {   
         private static readonly IEmailSender toolEmailSender = new EmailSender();
 
-        // 生成验证码
+        // 生成验证码 lujun
         private static string generateVerificationCode(int length = 6)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
